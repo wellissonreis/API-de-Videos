@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Alura_Challenge_Backend_Semana_1.Data.Dtos;
+namespace Alura_Challenge_Backend_Semana_1.Data.Dtos.Video;
 
 public class UpdateVideoDto
 {

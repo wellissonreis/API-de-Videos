@@ -1,5 +1,5 @@
 ﻿using Alura_Challenge_Backend_Semana_1.Data;
-using Alura_Challenge_Backend_Semana_1.Data.Dtos;
+using Alura_Challenge_Backend_Semana_1.Data.Dtos.Video;
 using Alura_Challenge_Backend_Semana_1.Models;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
@@ -69,5 +69,18 @@ public class VideosController : ControllerBase
         _context.Remove(video);
         _context.SaveChanges();
         return NoContent();
+    }
+
+
+    [Route("search")]
+    public IActionResult BuscaFilmes(string titulo)
+    {
+        Videos video = _context.videos.FirstOrDefault(video => video.Titulo == titulo);
+        if (video != null)
+        {
+            Videos dto = _mapper.Map<Videos>(video);
+            return Ok(dto);
+        }
+        return NotFound(video);
     }
 }

@@ -10,4 +10,5 @@ public class VideoContext : DbContext
             
     }
     public DbSet<Videos> videos { get; set; }
+    public DbSet<Categorias> categorias { get; set; }
 }
