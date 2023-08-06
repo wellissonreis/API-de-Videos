@@ -3,6 +3,8 @@ using Alura_Challenge_Backend_Semana_1.Data.Dtos.Video;
 using Alura_Challenge_Backend_Semana_1.Models;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
 namespace Alura_Challenge_Backend_Semana_1.Controllers;
 
@@ -22,11 +24,20 @@ public class VideosController : ControllerBase
     [HttpPost]
     public IActionResult AdicionaVideo([FromBody] CreateVideoDto dto)
     {
-        Videos video = _mapper.Map<Videos>(dto);
-        _context.videos.Add(video);
-        _context.SaveChanges();
-        return CreatedAtAction(nameof(recuperaPorID), new
-        { id = video.Id }, video);
+        try
+        {
+            Videos video = _mapper.Map<Videos>(dto);
+            _context.videos.Add(video);
+            _context.SaveChanges();
+            return CreatedAtAction(nameof(recuperaPorID), new
+            { id = video.Id }, video);
+        }
+        catch
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError,
+            "Categoria inexistente");
+        }
+ 
     }
 
     [HttpGet]
@@ -71,16 +82,24 @@ public class VideosController : ControllerBase
         return NoContent();
     }
 
-
-    [Route("search")]
-    public IActionResult BuscaFilmes(string titulo)
+    [HttpGet("{search}")]
+    public async Task<ActionResult<IEnumerable<Videos>>> Search(string titulo)
     {
-        Videos video = _context.videos.FirstOrDefault(video => video.Titulo == titulo);
-        if (video != null)
+        try
         {
-            Videos dto = _mapper.Map<Videos>(video);
-            return Ok(dto);
+            Videos video = await _context.videos.FindAsync(titulo);
+            if (video != null)
+            {
+                Videos dto = _mapper.Map<Videos>(video);
+                return Ok(dto);
+            }
+            return NotFound();
         }
-        return NotFound(video);
+        catch
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError,
+             "Error retrieving data from the database");
+        }
     }
+
 }

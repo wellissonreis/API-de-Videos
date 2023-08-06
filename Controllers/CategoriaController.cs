@@ -25,7 +25,7 @@ public class CategoriaController : ControllerBase
         Categorias categoria = _mapper.Map<Categorias>(dto);
         _context.categorias.Add(categoria);
         _context.SaveChanges();
-        return CreatedAtAction(nameof(categoria), new { id = categoria.Id }, categoria);
+        return CreatedAtAction(nameof(recuperaPorID), new { id = categoria.Id }, categoria);
     }
     [HttpGet]
     public IEnumerable<ReadCategoriaDto> Recupera()
@@ -42,7 +42,7 @@ public class CategoriaController : ControllerBase
             Categorias dto = _mapper.Map<Categorias>(categoria);
             return Ok(dto);
         }
-        return NotFound();
+        return NotFound(categoria);
     }
 
     [HttpPut("{id}")]
@@ -53,6 +53,7 @@ public class CategoriaController : ControllerBase
         {
             _mapper.Map(dto, categoria);
             _context.SaveChanges();
+            return NoContent();
         }
         return NotFound();
     }
@@ -65,12 +66,13 @@ public class CategoriaController : ControllerBase
         {
             _context.Remove(categoria);
             _context.SaveChanges();
+            return NoContent();
         }
         return NotFound();
 
     }
 
-    [HttpGet]
+    [HttpGet("search")]
     public IActionResult recuperaPorBusca(string search)
     {
         Categorias categoria = _context.categorias.FirstOrDefault(c => c.Titulo == search);
@@ -81,5 +83,4 @@ public class CategoriaController : ControllerBase
         }
         return NotFound();
     }
-
 }
