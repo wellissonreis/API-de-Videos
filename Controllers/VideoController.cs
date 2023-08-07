@@ -4,7 +4,6 @@ using Alura_Challenge_Backend_Semana_1.Models;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Reflection;
 
 namespace Alura_Challenge_Backend_Semana_1.Controllers;
 
@@ -37,26 +36,34 @@ public class VideosController : ControllerBase
             return StatusCode(StatusCodes.Status500InternalServerError,
             "Categoria inexistente");
         }
- 
+
     }
 
     [HttpGet]
     public IEnumerable<ReadVideoDto> LerVideo()
     {
-        return _mapper.Map<List<ReadVideoDto>>(_context.videos);
+        return _mapper.Map<List<ReadVideoDto>>(_context.videos.ToList());
 
     }
 
-    [HttpGet("{id}")]
+   //[HttpGet("{id}")]
     public IActionResult recuperaPorID(int id)
     {
-        Videos video = _context.videos.FirstOrDefault(video => video.Id == id);
-        if (video != null)
+        try
         {
-            Videos dto = _mapper.Map<Videos>(video);
-            return Ok(dto);
+            Videos video = _context.videos.FirstOrDefault(video => video.Id == id);
+            if (video != null)
+            {
+                Videos dto = _mapper.Map<Videos>(video);
+                return Ok(dto);
+            }
+            return NotFound(video);
         }
-        return NotFound(video);
+        catch
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError,
+                     "Falha ao recuperar filme por id.");
+        }
     }
 
     [HttpPut("{id}")]
@@ -83,22 +90,24 @@ public class VideosController : ControllerBase
     }
 
     [HttpGet("{search}")]
-    public async Task<ActionResult<IEnumerable<Videos>>> Search(string titulo)
+    public IActionResult Search(string? titulo)
     {
         try
         {
-            Videos video = await _context.videos.FindAsync(titulo);
+            List<Videos> video = _context.videos.Where(video => video.Titulo.Contains(titulo)).ToList();
+
             if (video != null)
             {
-                Videos dto = _mapper.Map<Videos>(video);
+                List<Videos> dto = _mapper.Map<List<Videos>>(video);
                 return Ok(dto);
             }
-            return NotFound();
+
+            return NotFound(video);
         }
         catch
         {
             return StatusCode(StatusCodes.Status500InternalServerError,
-             "Error retrieving data from the database");
+                     "Falha ao recuperar filme por id.");
         }
     }
 

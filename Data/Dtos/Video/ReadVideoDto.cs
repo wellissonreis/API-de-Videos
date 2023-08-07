@@ -9,5 +9,5 @@ public class ReadVideoDto
     public string Titulo { get; set; }
     public string Descricao { get; set; }
     public string Url { get; set; }
-    public ReadCategoriaDto Categorias { get; set; }
+    public ReadCategoriaDto ReadCategoria { get; set; }
 }

@@ -14,6 +14,8 @@ public class VideoProfile : Profile
         CreateMap<Videos, UpdateVideoDto>();
 
         CreateMap<ReadVideoDto, Videos>();
-        CreateMap<Videos, ReadVideoDto>();
+
+        CreateMap<Videos, ReadVideoDto>()
+            .ForMember(videoDto => videoDto.ReadCategoria, opt => opt.MapFrom(video => video.Categorias));
     }
 }

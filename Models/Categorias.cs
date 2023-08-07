@@ -12,5 +12,5 @@ public class Categorias
     public string Titulo { get; set; }
     [DefaultValue ("#FFFFFF")]
     public string Cor { get; set;}
-    public virtual Videos Videos { get; set; }
+    public virtual ICollection<Videos> Videos { get; set; }
 }
