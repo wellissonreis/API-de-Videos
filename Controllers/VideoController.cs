@@ -1,6 +1,7 @@
 ﻿using Alura_Challenge_Backend_Semana_1.Data;
 using Alura_Challenge_Backend_Semana_1.Data.Dtos.Video;
 using Alura_Challenge_Backend_Semana_1.Models;
+using Canducci.Pagination;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -46,7 +47,7 @@ public class VideosController : ControllerBase
 
     }
 
-   //[HttpGet("{id}")]
+   [HttpGet("id/{id}")]
     public IActionResult recuperaPorID(int id)
     {
         try
@@ -66,6 +67,26 @@ public class VideosController : ControllerBase
         }
     }
 
+    [HttpGet("categoria/{id}")]
+    public IActionResult recuperaPorCategoriaID(int id)
+    {
+        try
+        {
+            Categorias cat = _context.categorias.FirstOrDefault(cat => cat.Id == id);
+            if (cat != null)
+            {
+                Categorias dto = _mapper.Map<Categorias>(cat);
+                return Ok(dto);
+            }
+            return NotFound(cat);
+        }
+        catch
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError,
+                     "Falha ao recuperar Categoria por id.");
+        }
+    }
+
     [HttpPut("{id}")]
     public IActionResult AtualizaVideo(int id,
         [FromBody] UpdateVideoDto dto)
@@ -81,8 +102,7 @@ public class VideosController : ControllerBase
     [HttpDelete("{id}")]
     public IActionResult DeletarVideo(int id)
     {
-        Videos video = _context.videos.FirstOrDefault(
-            video => video.Id == id);
+        Videos video = _context.videos.FirstOrDefault(video => video.Id == id);
         if (video == null) return NotFound();
         _context.Remove(video);
         _context.SaveChanges();
@@ -109,6 +129,20 @@ public class VideosController : ControllerBase
             return StatusCode(StatusCodes.Status500InternalServerError,
                      "Falha ao recuperar filme por id.");
         }
+    }
+
+    [HttpGet("page/{page?}")]
+    public async Task<IActionResult> Paginacao(int? page)
+    {
+        page ??= 1;
+        if (page <= 0) page = 1;
+       
+        var result = await _context
+            .videos
+            .AsNoTracking()
+            .OrderBy(video => video.Id)
+            .ToPaginatedRestAsync(page.Value, 10);
+        return Ok(result);
     }
 
 }
