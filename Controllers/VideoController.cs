@@ -132,7 +132,7 @@ public class VideosController : ControllerBase
     }
 
     [HttpGet("page/{page?}")]
-    public async Task<IActionResult> Paginacao(int? page)
+    public async Task<IActionResult> Paginacao([FromBody]int? page)
     {
         page ??= 1;
         if (page <= 0) page = 1;
@@ -141,7 +141,8 @@ public class VideosController : ControllerBase
             .videos
             .AsNoTracking()
             .OrderBy(video => video.Id)
-            .ToPaginatedRestAsync(page.Value, 10);
+            .ToPaginatedRestAsync(page.Value, 5);
+
         return Ok(result);
     }
 
