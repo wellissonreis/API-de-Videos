@@ -1,10 +1,12 @@
 ﻿using Alura_Challenge_Backend_Semana_1.Data;
 using Alura_Challenge_Backend_Semana_1.Data.Dtos.Video;
 using Alura_Challenge_Backend_Semana_1.Models;
-using Canducci.Pagination;
 using AutoMapper;
+using Canducci.Pagination;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using X.PagedList;
 
 namespace Alura_Challenge_Backend_Semana_1.Controllers;
 
@@ -47,15 +49,15 @@ public class VideosController : ControllerBase
 
     }
 
-   [HttpGet("id/{id}")]
+    [HttpGet("id/{id}")]
     public IActionResult recuperaPorID(int id)
     {
         try
         {
-            Videos video = _context.videos.FirstOrDefault(video => video.Id == id);
+            List<Videos> video = _context.videos.Where(video => video.Id == id).ToList();
             if (video != null)
             {
-                Videos dto = _mapper.Map<Videos>(video);
+                List<Videos> dto = _mapper.Map<List<Videos>>(video);
                 return Ok(dto);
             }
             return NotFound(video);
@@ -132,18 +134,16 @@ public class VideosController : ControllerBase
     }
 
     [HttpGet("page/{page?}")]
-    public async Task<IActionResult> Paginacao([FromBody]int? page)
+    public  IActionResult Paginacao(int? page)
     {
-        page ??= 1;
-        if (page <= 0) page = 1;
-       
-        var result = await _context
-            .videos
-            .AsNoTracking()
-            .OrderBy(video => video.Id)
-            .ToPaginatedRestAsync(page.Value, 5);
+        int pageSize = 2;
+        int pageNumber = page ?? 1;
 
-        return Ok(result);
+        if (pageNumber <= 0) pageNumber = 1;
+
+        var videos = _context.videos.OrderBy(v => v.Id);
+        var pagedVideos = videos.ToPagedList(pageNumber, pageSize).ToList();
+
+        return Ok(pagedVideos);
     }
-
 }
