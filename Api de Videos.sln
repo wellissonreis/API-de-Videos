@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33723.286
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alura Challenge Backend Semana 1", "Alura Challenge Backend Semana 1.csproj", "{25FF7D32-6C7F-4D3F-A8A6-25F314ABC920}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api de Videos", "Api de Videos.csproj", "{25FF7D32-6C7F-4D3F-A8A6-25F314ABC920}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
