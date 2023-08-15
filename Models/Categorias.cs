@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace Alura_Challenge_Backend_Semana_1.Models;
+namespace ApiDeVideos.Models;
 
 public class Categorias
 {

@@ -1,10 +1,10 @@
-﻿using Alura_Challenge_Backend_Semana_1.Data;
-using Alura_Challenge_Backend_Semana_1.Data.Dtos.Categoria;
-using Alura_Challenge_Backend_Semana_1.Models;
+﻿using ApiDeVideos.Data;
+using ApiDeVideos.Data.Dtos.Categoria;
+using ApiDeVideos.Models;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Alura_Challenge_Backend_Semana_1.Controllers;
+namespace ApiDeVideos.Controllers;
 
 [ApiController]
 [Route("[controller]")]

@@ -1,7 +1,7 @@
-﻿using Alura_Challenge_Backend_Semana_1.Models;
+﻿using ApiDeVideos.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace Alura_Challenge_Backend_Semana_1.Data;
+namespace ApiDeVideos.Data;
 
 public class VideoContext : DbContext
 {
