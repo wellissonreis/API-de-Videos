@@ -3,6 +3,7 @@ using System;
 using ApiDeVideos.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Alura_Challenge_Backend_Semana_1.Migrations
 {
     [DbContext(typeof(UsuarioDbContext))]
-    partial class UsuarioDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230821171457_AtualizaDadosUsuario")]
+    partial class AtualizaDadosUsuario
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
