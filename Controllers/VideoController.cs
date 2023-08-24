@@ -1,6 +1,6 @@
-﻿using Alura_Challenge_Backend_Semana_1.Data;
-using Alura_Challenge_Backend_Semana_1.Data.Dtos.Video;
-using Alura_Challenge_Backend_Semana_1.Models;
+﻿using ApiDeVideos.Data;
+using ApiDeVideos.Data.Dtos.Video;
+using ApiDeVideos.Models;
 using AutoMapper;
 using Canducci.Pagination;
 using Microsoft.AspNetCore.Mvc;
@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using X.PagedList;
 
-namespace Alura_Challenge_Backend_Semana_1.Controllers;
+namespace ApiDeVideos.Controllers;
 
 [ApiController]
 [Route("[controller]")]

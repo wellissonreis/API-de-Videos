@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Alura_Challenge_Backend_Semana_1.Models
+namespace ApiDeVideos.Models
 {
     public class Videos
     {

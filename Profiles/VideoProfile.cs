@@ -1,8 +1,8 @@
-﻿using Alura_Challenge_Backend_Semana_1.Data.Dtos.Video;
-using Alura_Challenge_Backend_Semana_1.Models;
+﻿using ApiDeVideos.Data.Dtos.Video;
+using ApiDeVideos.Models;
 using AutoMapper;
 
-namespace Alura_Challenge_Backend_Semana_1.Profiles;
+namespace ApiDeVideos.Profiles;
 
 public class VideoProfile : Profile
 {

@@ -1,7 +1,7 @@
-﻿using Alura_Challenge_Backend_Semana_1.Data.Dtos.Categoria;
+﻿using ApiDeVideos.Data.Dtos.Categoria;
 using System.ComponentModel.DataAnnotations;
 
-namespace Alura_Challenge_Backend_Semana_1.Data.Dtos.Video;
+namespace ApiDeVideos.Data.Dtos.Video;
 
 public class ReadVideoDto
 {

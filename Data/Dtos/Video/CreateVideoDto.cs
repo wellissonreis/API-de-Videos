@@ -1,8 +1,8 @@
-﻿using Alura_Challenge_Backend_Semana_1.Models;
+﻿using ApiDeVideos.Models;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Alura_Challenge_Backend_Semana_1.Data.Dtos.Video;
+namespace ApiDeVideos.Data.Dtos.Video;
 
 public class CreateVideoDto
 {

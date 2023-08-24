@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace Alura_Challenge_Backend_Semana_1.Migrations
+namespace ApiDeVideos.Migrations
 {
     /// <inheritdoc />
     public partial class AjustedeRelaçãodeVideos : Migration
