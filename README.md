@@ -14,13 +14,13 @@ Se você também está interessado em aprender mais sobre APIs e deseja testar a
 
 # Configurando a API em sua máquina
 #### Siga os passos abaixo para executar a aplicação em seu ambiente:
-• Ter instalado em sua máquina o vscode, visual studio 2022 ou qualquer outro "gerenciador de códigos"
-• Ter o POSTGRESQL instalado em sua máquina, para isso siga os passos de como instalar [PostgreSQL](https://www.postgresql.org/download/). Neste projeto utilize a versão 15.00.
-• Verificar o arquivo 'appsettings.json', nele contém as connection strings, devem ser configuradas para execução do projeto. 
+<li>Ter instalado em sua máquina o vscode, visual studio 2022 ou qualquer outro "gerenciador de códigos"
+<li>Ter o POSTGRESQL instalado em sua máquina, para isso siga os passos de como instalar [PostgreSQL](https://www.postgresql.org/download/). Neste projeto utilize a versão 15.00.
+<li>Verificar o arquivo 'appsettings.json', nele contém as connection strings, devem ser configuradas para execução do projeto. 
 ```
 "Server=127.0.0.1;Port=5432;Database=video;User Id=[SEU ID];Password=[SUA SENHA];"
 ```
-• Por fim, executar a update das migrations. 
+<li>Por fim, executar a update das migrations. 
 ```
 Update-database -Context UsuarioDbContext
 ```
