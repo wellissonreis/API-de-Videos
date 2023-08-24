@@ -8,7 +8,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace Alura_Challenge_Backend_Semana_1.Migrations
+namespace ApiDeVideos.Migrations
 {
     [DbContext(typeof(UsuarioDbContext))]
     partial class UsuarioDbContextModelSnapshot : ModelSnapshot

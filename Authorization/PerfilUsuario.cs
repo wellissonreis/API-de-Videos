@@ -11,3 +11,4 @@ public class PerfilUsuario : IAuthorizationRequirement
     }
     public int Admin { get; set; }
 }
+

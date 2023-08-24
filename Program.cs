@@ -10,8 +10,12 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.AspNetCore.Authorization;
 
+
 var builder = WebApplication.CreateBuilder(args);
 var ConnString = builder.Configuration.GetConnectionString("VideoConnection");
+
+builder.Services.AddSingleton<
+    IAuthorizationMiddlewareResultHandler, UsuarioFail>();
 
 // Add services to the container.
 //Adicionando a função de conexão no BD
@@ -46,7 +50,7 @@ builder.Services.AddControllers().AddNewtonsoftJson(options =>
     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
 );
 
-builder.Services.AddSingleton<IAuthorizationHandler, UsuarioAuthorization>();
+//builder.Services.AddSingleton<IAuthorizationHandler, UsuarioAuthorization>();
 
 builder.Services.AddScoped<TokenService>();
 
@@ -62,18 +66,13 @@ builder.Services.AddAuthentication(options =>
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("WellissonCredentialEtomalecaracteresxdxdxd")),
         ValidateAudience = false,
         ValidateIssuer = false,
-        ClockSkew = TimeSpan.Zero
+        ClockSkew = TimeSpan.Zero,
     };
 });
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
-builder.Services.AddAuthorization(options =>
-{
-    options.AddPolicy("PerfilUsuario", policy => policy.AddRequirements(new PerfilUsuario(1)));
-});
 
 var app = builder.Build();  
 

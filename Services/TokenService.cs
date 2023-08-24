@@ -16,7 +16,7 @@ public class TokenService
                 new Claim("id", usuario.Id),
                 new Claim(ClaimTypes.DateOfBirth, usuario.DataNascimento.ToString()),
                 new Claim("loginTimestamp", DateTime.UtcNow.ToString()),
-                new Claim(ClaimTypes.SerialNumber, usuario.PerfilUsuario.ToString())
+                new Claim(ClaimTypes.Role, usuario.PerfilUsuario.ToString()),
            };
 
         var chave = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("WellissonCredentialEtomalecaracteresxdxdxd"));
