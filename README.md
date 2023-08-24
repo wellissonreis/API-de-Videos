@@ -6,14 +6,14 @@ Este é um projeto de API de Vídeos que estou desenvolvendo como parte dos meus
 
 O principal objetivo desse projeto é aprimorar meus conhecimentos em desenvolvimento de APIs e práticas de programação. Estou explorando diversos conceitos, como autenticação, permissões de usuário e gestão de recursos.
 
-## Consultas com Postman
+## Explorando com o Postman
 
 Durante o desenvolvimento, estou utilizando o [Postman](https://www.postman.com/) para testar e explorar a API. Com o Postman, é possível realizar consultas aos endpoints, enviar solicitações HTTP e verificar as respostas.
 
 Se você também está interessado em aprender mais sobre APIs e deseja testar a API de Vídeos, baixe o Postman e experimente!
 
 # Configurando a API em sua máquina
-#### Os passos para executar esta aplicação em seu software são os seguinte
+#### Siga os passos abaixo para executar a aplicação em seu ambiente:
 • Ter instalado em sua máquina o vscode, visual studio 2022 ou qualquer outro "gerenciador de códigos"
 • Ter o POSTGRESQL instalado em sua máquina, para isso siga os passos de como instalar [PostgreSQL](https://www.postgresql.org/download/). Neste projeto utilize a versão 15.00.
 • Verificar o arquivo 'appsettings.json', nele contém as connection strings, devem ser configuradas para execução do projeto. 
@@ -26,7 +26,7 @@ Update-database -Context UsuarioDbContext
 ```
 
 # Para utilizar a API, siga os comandos descritos abaixo: 
-## Cadastrando Usuários ༼ つ ◕_◕ ༽つ
+## Cadastrando Usuários 📝 ༼ つ ◕_◕ ༽つ
 > Para cadastrar um usuário primeiro utilize o seguinte link: 📹
 ```
 https://localhost:7279/Usuario/cadastro
@@ -50,7 +50,7 @@ https://localhost:7279/Usuario/cadastro
 Acima de 4 visitantes 
 ```
 
-## Efetuando Login (●'◡'●)
+## Efetuando Login 🔑 (●'◡'●)
 > Para efetuar o login basta seguir os passos infracitados:
 ```
 https://localhost:7279/Usuario/login
@@ -63,17 +63,17 @@ https://localhost:7279/Usuario/login
 }
 ```
 
-## Cadastrando vídeos (┬┬﹏┬┬) 
+## Cadastrando vídeos 🎬 (┬┬﹏┬┬) 
 > Será descrito em breve
 
-## Visualizando vídeos (┬┬﹏┬┬) 
+## Visualizando vídeos 📺 (┬┬﹏┬┬) 
 > Será descrito em breve
 
 
-## Cadastrando Categorias (┬┬﹏┬┬) 
+## Cadastrando Categorias 🗂️ (┬┬﹏┬┬) 
 > Será descrito em breve
 
-## Visualizando Visualizando (┬┬﹏┬┬) 
+## Visualizando Visualizando 📂 (┬┬﹏┬┬) 
 > Será descrito em breve
 
 
